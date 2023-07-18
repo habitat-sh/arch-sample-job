@@ -1,0 +1,3 @@
+# YAML file for settings, typically moved to ~/.chef.yml on install
+
+PORT: 3000
