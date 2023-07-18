@@ -2,7 +2,10 @@
 Sample application for building backend jobs
 
 ## Todo
-# How to build & extend the sample CLI application
+# Add sonar token & test
+# Add docker build
+
+# How to build & extend the sample job service
 
 How this was made
 - go mod init github.com/habitat-sh/arch-sample-job
