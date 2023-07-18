@@ -1,4 +1,4 @@
-module habitat-sh/arch-sample-job
+module github.com/habitat-sh/arch-sample-job
 
 go 1.20
 

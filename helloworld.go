@@ -2,6 +2,7 @@ package main
 
 import (
     // internal/local imports: use an alias and always put in quotation marks
+    //"cmd"
     "github.com/habitat-sh/arch-sample-job/cmd"
 	
     // external imports
