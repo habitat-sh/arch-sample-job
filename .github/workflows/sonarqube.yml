@@ -1,7 +1,6 @@
 name: SonarQube scan
-
+# place this file in <root folder>/.github/workflows
 on:
-  # Trigger analysis when pushing to your main branches, and when creating a pull request.
   push:
     branches:
       - main
@@ -12,18 +11,21 @@ on:
  
 jobs:
   sonarqube:
-    runs-on: ip-range-controlled
-#    runs-on: ubuntu-latest for GH runner
-#    needs: [build]
+    runs-on: ubuntu-latest-4-cores
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
-        # Disabling shallow clone is recommended for improving relevancy of reporting
         fetch-depth: 0
+    
+    - name: Generate coverage.out and covreport.xml file
+      run: go test -v -coverprofile="coverage.out" ./... 
+    - name: Copy file
+      run: cp coverage.out test/unittest/coverage.out
+    - name: cat the file
+      run: cat test/unittest/coverage.out
+    
     - name: SonarQube Scan
       uses: sonarsource/sonarqube-scan-action@master
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
- 
- 
